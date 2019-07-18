@@ -1,7 +1,11 @@
 <ng-container>
-  <mat-icon>
-    message
-  </mat-icon>
-  <h3>{{ message?.messageTitle }}</h3>
-  <p>{{ message?.registryDateTime }}</p>
+  <div>
+    <mat-icon>
+      message
+    </mat-icon>
+  </div>
+  <div>
+    <h3>{{ message?.messageTitle }}</h3>
+    <p>{{ dateFormated }}</p>
+  </div>
 </ng-container>

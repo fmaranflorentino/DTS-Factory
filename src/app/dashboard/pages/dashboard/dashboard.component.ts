@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MessagesList } from 'src/app/shared/models/messages-list.interface';
-import { Observable } from 'rxjs';
 
 import { MessagesService } from 'src/app/shared/services/messages/messages.service';
 import { SkeletonService } from 'src/app/shared/services/skeleton/skeleton.service';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dashboard',
@@ -109,8 +110,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   handleMessageDetail(event) {
-    this.selectedMessage = this.messagesList
-      .filter(message => message.id === event)[0];
+    this.selectedMessage = this.messagesList[event];
+  }
+
+  get dateFormated() {
+    return moment(this.selectedMessage.message.registryDateTime).format('DD/MM/YYYY HH:MM');
   }
 
 }

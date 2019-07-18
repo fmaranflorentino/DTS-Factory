@@ -14,7 +14,7 @@ export class MessagesListComponent implements OnInit {
   messageSelected: EventEmitter<any> = new EventEmitter();
   skeleton = {
     isActive: false,
-    items: new Array(4),
+    items: new Array(7),
     sub: new Subscription()
   };
 
@@ -31,9 +31,9 @@ export class MessagesListComponent implements OnInit {
       });
   }
 
-  showMessageDetail(messageId) {
+  showMessageDetail(index) {
     this.messageSelected
-      .emit(messageId);
+      .emit(index);
   }
 
 }

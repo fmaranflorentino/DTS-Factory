@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-message',
@@ -13,6 +14,10 @@ export class MessageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  get dateFormated() {
+    return moment(this.message.registryDateTime).format('DD/MM/YYYY HH:MM');
   }
 
 }

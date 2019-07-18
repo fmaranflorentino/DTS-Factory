@@ -1,8 +1,18 @@
-.skeleton {
-    width: 100%;
-    height: 85px;
+app-messages-list {
+  background-color: #fff;
+  border-radius: 8px;
 
-    margin: 0 0 15px 0;
+  @extend %display-block;
+  height: 100%;
+
+  .skeleton {
+    border-radius: 8px;
+    @extend %display-block;
+    width: 80%;
+    height: 55px;
+
+    margin: 0 auto 15px auto;
 
     @extend .animated-background;
+  }
 }

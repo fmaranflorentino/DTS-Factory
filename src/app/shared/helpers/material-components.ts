@@ -5,7 +5,8 @@ import {
     MatSelectModule,
     MatInputModule,
     MatRippleModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
 } from '@angular/material';
 
 export const MATERIAL_COMPONENTS = [
@@ -15,5 +16,6 @@ export const MATERIAL_COMPONENTS = [
     MatSelectModule,
     MatInputModule,
     MatRippleModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
 ];

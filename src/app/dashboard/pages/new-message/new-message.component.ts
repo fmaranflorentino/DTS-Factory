@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagesService } from 'src/app/shared/services/messages/messages.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-new-message',
@@ -8,7 +9,8 @@ import { MessagesService } from 'src/app/shared/services/messages/messages.servi
 })
 export class NewMessageComponent implements OnInit {
   constructor(
-    private messages$: MessagesService
+    private messages$: MessagesService,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -17,7 +19,8 @@ export class NewMessageComponent implements OnInit {
   handleNewMessage(e) {
     this.messages$
       .addNewMessage(e)
-      .subscribe(resp => console.log(resp))
+      .subscribe(resp => {
+      });
   }
 
 }

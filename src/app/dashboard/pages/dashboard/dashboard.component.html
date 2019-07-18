@@ -1,13 +1,45 @@
 <div class="container">
-  <div class="messages-list">
+  <div class="messages-list" *ngIf="messagesList && messagesList.length !== 0">
     <app-messages-list
-     [messagesList]="messagesList"
-     (messageSelected)="handleMessageDetail($event)"></app-messages-list>
+      [messagesList]="messagesList"
+      (messageSelected)="handleMessageDetail($event)"
+    ></app-messages-list>
   </div>
 
-  <div class="message-detail">
-    <p *ngIf="selectedMessage">
-      {{ selectedMessage?.message?.messageTitle }}
-    </p>
+  <div
+    class="message-detail"
+    [ngClass]="{ empty: !selectedMessage }"
+    *ngIf="messagesList && messagesList.length !== 0"
+  >
+    <ng-container *ngIf="selectedMessage">
+      <h3>
+        {{ selectedMessage?.message?.messageTitle }}
+      </h3>
+
+      <small>
+        {{ dateFormated }}
+      </small>
+
+      <p>
+        {{ selectedMessage?.message?.messageText }}
+      </p>
+    </ng-container>
+
+    <div *ngIf="!selectedMessage">
+      <mat-icon>arrow_right_alt</mat-icon>
+      <p>Selecione uma mensagem para ver seus detalhes.</p>
+    </div>
   </div>
+</div>
+
+<div class="no-messages" *ngIf="messagesList && messagesList.length === 0">
+  <p>Você ainda não possui nenhuma mensagem!</p>
+
+  <button
+    mat-raised-button
+    color="primary"
+    [routerLink]="['/dashboard/new-message']"
+  >
+    Cadastrar nova mensagem
+  </button>
 </div>

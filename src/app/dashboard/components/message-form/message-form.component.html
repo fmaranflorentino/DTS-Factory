@@ -2,9 +2,10 @@
   <mat-form-field>
     <input
       matInput
+      appOnlyLetters
       placeholder="Nome"
+      autocomplete="off"
       formControlName="name"
-      (keypress)="handleNameString($event)"
     />
     <ng-container *ngIf="form.name.errors">
       <mat-error *ngIf="form.name.errors.required && form.name.touched">
@@ -14,7 +15,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="E-mail" formControlName="email" />
+    <input matInput autocomplete="off" placeholder="E-mail" formControlName="email" />
     <ng-container *ngIf="form.name.errors"></ng-container>
     <ng-container *ngIf="form.email.errors">
       <mat-error *ngIf="form.email.errors.required && form.email.touched">
@@ -28,10 +29,13 @@
 
   <mat-form-field>
     <input
-      type="number"
+      type="text"
       matInput
+      appOnlyNumbers
+      autocomplete="off"
       placeholder="Telefone"
       formControlName="phone"
+      [maxLength]="14"
     />
   </mat-form-field>
 

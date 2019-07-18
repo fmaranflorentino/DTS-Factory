@@ -6,10 +6,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MATERIAL_COMPONENTS, SHARED_COMPONENTS } from './helpers/';
+import { OnlyNumbersDirective } from './directives/only-numbers.directive';
+import { OnlyLettersDirective } from './directives/only-letters.directive';
 
 @NgModule({
   declarations: [
-    ...SHARED_COMPONENTS
+    ...SHARED_COMPONENTS,
+    OnlyNumbersDirective,
+    OnlyLettersDirective
   ],
   imports: [
     CommonModule,
@@ -25,6 +29,8 @@ import { MATERIAL_COMPONENTS, SHARED_COMPONENTS } from './helpers/';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    OnlyNumbersDirective,
+    OnlyLettersDirective, 
     ...MATERIAL_COMPONENTS,
     ...SHARED_COMPONENTS
   ]
