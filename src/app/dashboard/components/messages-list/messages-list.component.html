@@ -1,4 +1,4 @@
-<ng-container *ngIf="messagesList">
+<ng-container *ngIf="messagesList && !skeleton.isActive">
   <cdk-virtual-scroll-viewport itemSize="10" style="height: 500px;">
     <ng-container *cdkVirtualFor="let message of messagesList; let i = index">
       <app-message
@@ -7,6 +7,10 @@
        mat-ripple></app-message>
     </ng-container>
   </cdk-virtual-scroll-viewport>
+</ng-container>
+
+<ng-container *ngIf="skeleton.isActive">
+  <div class="skeleton" *ngFor="let item of skeleton.items"></div>
 </ng-container>
 
 

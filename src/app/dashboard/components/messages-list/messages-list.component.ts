@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SkeletonService } from 'src/app/shared/services/skeleton/skeleton.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-messages-list',
@@ -10,10 +12,23 @@ export class MessagesListComponent implements OnInit {
   messagesList: any[];
   @Output()
   messageSelected: EventEmitter<any> = new EventEmitter();
+  skeleton = {
+    isActive: false,
+    items: new Array(4),
+    sub: new Subscription()
+  };
 
-  constructor() { }
+  constructor(
+    private skeleton$: SkeletonService
+  ) { }
 
   ngOnInit() {
+    this.skeleton.sub = this.skeleton$
+      .getSkeletonStatus()
+      .subscribe(resp => {
+        console.log('skeleton status', resp);
+        this.skeleton.isActive = resp;
+      });
   }
 
   showMessageDetail(messageId) {

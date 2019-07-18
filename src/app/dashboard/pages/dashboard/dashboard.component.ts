@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MessagesList } from 'src/app/shared/models/messages-list.interface';
 import { Observable } from 'rxjs';
 
 import { MessagesService } from 'src/app/shared/services/messages/messages.service';
+import { SkeletonService } from 'src/app/shared/services/skeleton/skeleton.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
   messagesList: MessagesList[] = [
     {
       id: 1,
@@ -71,25 +72,39 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(
-    private messages$: MessagesService
+    private messages$: MessagesService,
+    private skeleton$: SkeletonService
   ) { }
 
-  async ngOnInit() {
-    await this.getAllMessages();
+  ngOnInit() {
+  }
+
+  async ngAfterViewInit() {
+    await this.skeleton$
+      .sewtInitialState();
+
+    this.getAllMessages();
   }
 
   getAllMessages() {
     return new Promise((resolve, reject) => {
-      this.messages$
-        .getAllMessages()
-        .subscribe(resp => {
-          this.messagesList = resp;
-          console.log('buc', this.messagesList);
-          resolve();
-        },
-        error => {
-          reject();
-        });
+      this.skeleton$
+        .toggleSkeletonStatus();
+      setTimeout(() => {
+        this.messages$
+          .getAllMessages()
+          .subscribe(resp => {
+            this.messagesList = resp;
+            console.log('buc', this.messagesList);
+            this.skeleton$
+              .toggleSkeletonStatus();
+            resolve();
+          },
+            error => {
+              reject();
+            });
+      }, 1000);
+
     });
   }
 
