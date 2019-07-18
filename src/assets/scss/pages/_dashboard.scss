@@ -1,0 +1,16 @@
+app-dashboard {
+  .container {
+    @extend %display-flex;
+
+    .messages-list {
+      border: 1px solid #ccc;
+      width: 30%;
+    }
+
+    .message-detail {
+      border: 1px solid red;
+      width: calc(70% - 40px);
+      margin: 0 0 0 40px;
+    }
+  }
+}

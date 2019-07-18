@@ -1,4 +1,12 @@
 @import "./assets/scss/reset";
 @import "./assets/scss/utils/variables";
+@import "./assets/scss/utils/placeholder";
 
 @import "./assets/scss/theme/theme";
+
+@import "./assets/scss/pages/base";
+@import "./assets/scss/pages/dashboard";
+@import "./assets/scss/pages/new-message";
+
+@import "./assets/scss/components/header";
+@import "./assets/scss/components/message";

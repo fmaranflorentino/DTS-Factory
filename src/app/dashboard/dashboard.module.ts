@@ -10,13 +10,18 @@ import { MessageComponent } from './components/message/message.component';
 import { MessageDetailsComponent } from './components/message-details/message-details.component';
 import { NewMessageComponent } from './pages/new-message/new-message.component';
 import { MessageFormComponent } from './components/message-form/message-form.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [DashboardComponent, MessagesListComponent, MessageComponent, MessageDetailsComponent, NewMessageComponent, MessageFormComponent],
+  declarations: [DashboardComponent,
+     MessagesListComponent,
+      MessageComponent, MessageDetailsComponent,
+       NewMessageComponent, MessageFormComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    ScrollingModule
   ]
 })
 export class DashboardModule { }

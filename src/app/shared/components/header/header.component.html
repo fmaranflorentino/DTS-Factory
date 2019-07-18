@@ -1,1 +1,16 @@
-<p>header works!</p>
+<header>
+  <mat-toolbar color="primary">
+    <nav>
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a
+           [routerLink]="[item.routerLink]"
+           mat-button
+           href="javascript:void(0)">
+           {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </mat-toolbar>
+</header>

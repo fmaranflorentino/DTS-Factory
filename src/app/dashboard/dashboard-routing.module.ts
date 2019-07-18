@@ -6,7 +6,7 @@ import { NewMessageComponent } from './pages/new-message/new-message.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'new-message', component: NewMessageComponent }
+  { path: 'new-message', component: NewMessageComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

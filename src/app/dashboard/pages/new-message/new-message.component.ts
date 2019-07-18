@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService } from 'src/app/shared/services/messages/messages.service';
 
 @Component({
   selector: 'app-new-message',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-message.component.scss']
 })
 export class NewMessageComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    private messages$: MessagesService
+  ) { }
 
   ngOnInit() {
+  }
+
+  handleNewMessage(e) {
+    this.messages$
+      .addNewMessage(e)
+      .subscribe(resp => console.log(resp))
   }
 
 }

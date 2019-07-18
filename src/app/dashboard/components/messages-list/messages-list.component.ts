@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-messages-list',
@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages-list.component.scss']
 })
 export class MessagesListComponent implements OnInit {
+  @Input()
+  messagesList: any[];
+  @Output()
+  messageSelected: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showMessageDetail(messageId) {
+    this.messageSelected
+      .emit(messageId);
   }
 
 }

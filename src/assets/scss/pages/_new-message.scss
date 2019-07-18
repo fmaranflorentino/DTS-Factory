@@ -1,0 +1,10 @@
+app-new-message {
+  form {
+    width: 600px;
+    margin: 0 auto;
+
+    .mat-form-field {
+      @extend %display-block;
+    }
+  }
+}

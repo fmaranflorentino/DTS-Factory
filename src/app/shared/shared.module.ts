@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MATERIAL_COMPONENTS, SHARED_COMPONENTS } from './helpers/';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { MATERIAL_COMPONENTS, SHARED_COMPONENTS } from './helpers/';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,18 @@ import { MATERIAL_COMPONENTS, SHARED_COMPONENTS } from './helpers/';
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
     ...MATERIAL_COMPONENTS
   ],
   exports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
     ...MATERIAL_COMPONENTS,
     ...SHARED_COMPONENTS
   ]

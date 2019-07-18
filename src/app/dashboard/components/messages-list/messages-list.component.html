@@ -1,1 +1,13 @@
-<p>messages-list works!</p>
+<ng-container *ngIf="messagesList">
+  <cdk-virtual-scroll-viewport itemSize="10" style="height: 500px;">
+    <ng-container *cdkVirtualFor="let message of messagesList; let i = index">
+      <app-message
+       [message]="message.message"
+       (click)="showMessageDetail(message.id)"
+       mat-ripple></app-message>
+    </ng-container>
+  </cdk-virtual-scroll-viewport>
+</ng-container>
+
+
+<!-- <ng-container *ngIf="(usersList$ | async) as usersList"> -->

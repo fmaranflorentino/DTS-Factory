@@ -1,7 +1,13 @@
-<app-base>
-  <app-header></app-header>
-
-  <div>
-    <app-messages-list></app-messages-list>
+<div class="container">
+  <div class="messages-list">
+    <app-messages-list
+     [messagesList]="messagesList"
+     (messageSelected)="handleMessageDetail($event)"></app-messages-list>
   </div>
-</app-base>
+
+  <div class="message-detail">
+    <p *ngIf="selectedMessage">
+      {{ selectedMessage?.message?.messageTitle }}
+    </p>
+  </div>
+</div>

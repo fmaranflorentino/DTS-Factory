@@ -1,1 +1,73 @@
-<p>message-form works!</p>
+<form [formGroup]="messageForm">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Nome"
+      formControlName="name"
+      (keypress)="handleNameString($event)"
+    />
+    <ng-container *ngIf="form.name.errors">
+      <mat-error *ngIf="form.name.errors.required && form.name.touched">
+        Campo obrigatório
+      </mat-error>
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="E-mail" formControlName="email" />
+    <ng-container *ngIf="form.name.errors"></ng-container>
+    <ng-container *ngIf="form.email.errors">
+      <mat-error *ngIf="form.email.errors.required && form.email.touched">
+        Campo obrigatório
+      </mat-error>
+      <mat-error *ngIf="form.email.errors.email && form.email.touched">
+        Formato de e-mail inválido
+      </mat-error>
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      type="number"
+      matInput
+      placeholder="Telefone"
+      formControlName="phone"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Assunto" formControlName="subject">
+      <mat-option *ngFor="let item of formSubjectOptions" [value]="item">{{
+        item
+      }}</mat-option>
+    </mat-select>
+    <ng-container *ngIf="form.subject.errors">
+      <mat-error *ngIf="form.subject.errors.required && form.subject.touched">
+        Campo obrigatório
+      </mat-error>
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Mensagem"
+      formControlName="message"
+    ></textarea>
+    <ng-container *ngIf="form.message.errors">
+      <mat-error *ngIf="form.message.errors.required && form.message.touched">
+        Campo obrigatório
+      </mat-error>
+    </ng-container>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    type="button"
+    [disabled]="messageForm.invalid"
+    color="primary"
+    (click)="sendMessage()"
+  >
+    Enviar
+  </button>
+</form>
