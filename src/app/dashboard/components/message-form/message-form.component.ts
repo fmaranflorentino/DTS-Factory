@@ -68,6 +68,8 @@ export class MessageFormComponent implements OnInit {
 
     this.newMessage.emit(newMessage);
 
+    this.messageForm.reset();
+
   }
 
   get form() {

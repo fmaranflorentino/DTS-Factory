@@ -2,4 +2,6 @@
   Use o formulário abaixo para enviar uma nova mensagem.
 </h2>
 
-<app-message-form (newMessage)="handleNewMessage($event)"></app-message-form>
+<app-message-form (newMessage)="handleNewMessage($event)">
+  <p *ngIf="sending" style="text-align: center">Enviando mensagem.</p>
+</app-message-form>
