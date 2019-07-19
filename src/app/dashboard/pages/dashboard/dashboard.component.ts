@@ -96,7 +96,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           .getAllMessages()
           .subscribe(resp => {
             this.messagesList = resp;
-            console.log('buc', this.messagesList);
             this.skeleton$
               .toggleSkeletonStatus();
             resolve();

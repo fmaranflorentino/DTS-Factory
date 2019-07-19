@@ -9,8 +9,7 @@ export class OnlyNumbersDirective {
 
   @HostListener('input', ['$event']) onInputChange(event) {
     const nativeVal = this.el.nativeElement.value;
-    console.log(this.el)
-    
+
     this.el.nativeElement.value = nativeVal
       .replace(/\D/g, '')
       .replace(/^(\d{2})(\d)/g, '($1) $2')

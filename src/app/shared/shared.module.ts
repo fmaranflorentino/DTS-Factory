@@ -11,9 +11,9 @@ import { OnlyLettersDirective } from './directives/only-letters.directive';
 
 @NgModule({
   declarations: [
-    ...SHARED_COMPONENTS,
     OnlyNumbersDirective,
-    OnlyLettersDirective
+    OnlyLettersDirective,
+    ...SHARED_COMPONENTS
   ],
   imports: [
     CommonModule,
@@ -30,7 +30,7 @@ import { OnlyLettersDirective } from './directives/only-letters.directive';
     HttpClientModule,
     FormsModule,
     OnlyNumbersDirective,
-    OnlyLettersDirective, 
+    OnlyLettersDirective,
     ...MATERIAL_COMPONENTS,
     ...SHARED_COMPONENTS
   ]

@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="messages-list" *ngIf="messagesList && messagesList.length !== 0">
+<div class="container" *ngIf="messagesList && messagesList.length !== 0">
+  <div class="messages-list">
     <app-messages-list
       [messagesList]="messagesList"
       (messageSelected)="handleMessageDetail($event)"

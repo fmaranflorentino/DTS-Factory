@@ -26,7 +26,6 @@ export class MessagesListComponent implements OnInit {
     this.skeleton.sub = this.skeleton$
       .getSkeletonStatus()
       .subscribe(resp => {
-        console.log('skeleton status', resp);
         this.skeleton.isActive = resp;
       });
   }
